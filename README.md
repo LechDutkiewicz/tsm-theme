@@ -28,7 +28,7 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 * [BrowserSync](http://www.browsersync.io/) for keeping multiple browsers and devices synchronized while testing, along with injecting updated CSS and JS into your browser while you're developing
 * [Bower](http://bower.io/) for front-end package management
 * [asset-builder](https://github.com/austinpray/asset-builder) for the JSON file based asset pipeline
-* [Bootstrap](http://getbootstrap.com/)
+* [zurb foundation for sites](https://foundation.zurb.com/sites/docs/) currently 6.4.3
 * [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
 * ARIA roles and microformats
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
@@ -44,6 +44,12 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 * Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 
 See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
+
+## Custom features
+
+* [compass-mixins](https://www.npmjs.com/package/compass-mixins)
+* [gulp.spritesmith](https://www.npmjs.com/package/gulp.spritesmith) to handle sprites easily
+* [TGM Plugin Activation](http://tgmpluginactivation.com/) The best way to require and recommend plugins for WordPress themes
 
 ## Theme installation
 
