@@ -1,0 +1,28 @@
+{
+  "name": "sage",
+  "homepage": "https://roots.io/sage/",
+  "authors": [
+    "Ben Word <ben@benword.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "foundation-sites": "^6.4.3",
+    "motion-ui": "^1.2.3"
+  },
+  "resolutions": {
+    "jquery": "2.2.0"
+  },
+  "overrides": {
+    "motion-ui": {
+      "dependencies": {
+        "jquery": "~2.2.0",
+        "foundation-sites": "^6.3.1"
+      },
+      "main": [
+        "dist/motion-ui.js",
+        "src/motion-ui.scss"
+      ]
+    }
+  }
+}

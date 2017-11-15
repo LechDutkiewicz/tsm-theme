@@ -1,0 +1,29 @@
+img {
+	max-height: 100%;
+}
+
+.img {
+	&-container {
+		img {
+			display: block;
+			margin: auto;
+		}
+	}
+	&__responsive {
+		width: 100%;
+		height: auto;
+	}
+	&__centered {
+		display: block;
+		margin: auto;
+	}
+}
+
+/****************************************
+*										*
+*				Include sprites
+*										*
+****************************************/
+
+@include sprites($spritesheet-sprites);
+@include retina-sprites($retina-groups);

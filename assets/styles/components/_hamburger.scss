@@ -1,0 +1,58 @@
+.hamburger__toggle {
+}
+
+.hamburger {
+	&__container {
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
+	> span {
+		color: $primary-color;
+		display: block;
+		&:last-child {
+			text-transform: uppercase;
+			line-height: 1;
+			font-size: 12px;
+			margin-top: 3px;
+		}
+	}
+	&__bars {
+		width: 60%;
+		height: 60%;
+		margin: auto;
+		background-color: transparent;
+		position: relative;
+		.bar-top,
+		.bar-middle,
+		.bar-bottom {
+			display: block;
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			height: 4px;
+			margin: -2px 0 0;
+			background: $primary-color;
+			@include transform-origin(50%);
+			@include transition(translate, $cubic-transition);
+		}
+	}
+	.bar-top {
+		@include transform(translateY(-10px));
+	}
+	.bar-bottom {
+		@include transform(translateY(10px));
+	}
+	&__text {
+		display: block;
+	}
+}
+
+span + .hamburger {
+	margin-left: rem-calc(10);
+}

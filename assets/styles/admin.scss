@@ -1,0 +1,25 @@
+@import "common/variables";
+@import "theme_font";
+
+.field {
+	[data-field_name="themeicons"] {
+		li {
+			input {
+				display: none;
+				&[checked] + i {
+					opacity: 1;
+					border-color: $black;
+				}
+			}
+		}
+		i {
+			opacity: .5;
+			border: 1px solid;
+			padding: 5px;
+			border-radius: 7px;
+			&:hover, &:focus {
+				opacity: 1;
+			}
+		}
+	}
+}

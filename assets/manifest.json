@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "main.js": {
+      "files": [
+        "scripts/components/*.js",
+        "scripts/main.js"
+      ],
+      "main": true
+    },
+    "main.css": {
+      "files": [
+        "styles/main.scss"
+      ],
+      "main": true
+    },
+    "admin.css": {
+      "files": [
+        "styles/admin.scss"
+      ]
+    },
+    "customizer.js": {
+      "files": [
+        "scripts/customizer.js"
+      ]
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    },
+    "admin.js": {
+      "files": [
+        "scripts/admin.js"
+      ]
+    }
+  },
+  "config": {
+    "devUrl": "http://localhost/ksiaznica"
+  }
+}

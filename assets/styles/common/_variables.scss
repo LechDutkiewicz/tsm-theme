@@ -1,0 +1,158 @@
+// Glyphicons font path
+$images-path:			"../images/";
+$icon-font-path:        "../fonts/";
+
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+// Colors
+
+$white:					#FFFFFF;
+$black:					#000000;
+
+$turquoise:				#1abc9c;
+$green-sea:				#16a085;
+$emerald:				#2ecc71;
+$nephritis:				#27ae60;
+$peter-river:			#3498db;
+$belize-hole:			#2980b9;
+$amethyst:				#9b59b6;
+$wisteria:				#8e44ad;
+$wet-asphalt:			#34495e;
+$midnight-blue:			#2c3e50;
+$sun-flower:			#f1c40f;
+$orange:				#f39c12;
+$carrot:				#e67e22;
+$pumpkin:				#d35400;
+$alizarin:				#e74c3c;
+$pomegranate:			#c0392b;
+$clouds:				#ecf0f1;
+$silver:				#bdc3c7;
+$concrete:				#95a5a6;
+$asbestos:				#7f8c8d;
+
+// accent for icons, bullets, etc
+$primary-color:			$amethyst;
+$secondary-color:		$sun-flower;
+
+$success-color:			$green-sea;
+$warning-color:			$pumpkin;
+$alert-color:			$pomegranate;
+$light-gray-color:		$silver;
+$medium-gray-color:		$concrete;
+$dark-gray-color:		$asbestos;
+
+$autofill-color:		$sun_flower;
+
+/**
+ *
+ * Grid
+ *
+ */
+
+
+$column-huge-guter:		140;
+
+/**
+ *
+ * Responsive
+ *
+ */
+
+$mobile:				medium down;
+$tablet:				medium;
+$desktop:				xlarge;
+$desktop-large:			xxlarge;
+
+/****************************************
+*										*
+*				Header tags
+*										*
+****************************************/
+
+$headerTagsList: (
+	"h1",
+	"h2",
+	"h3",
+	"h4",
+	"h5",
+	"h6"
+	);
+
+/****************************************
+*										*
+*				Borders
+*										*
+****************************************/
+
+/****************************************
+*										*
+*				Transitions
+*										*
+****************************************/
+
+$cubic-transition:				.5s cubic-bezier(.455,.03,.515,.955);
+$cubic-transition-fast:			.15s cubic-bezier(.455,.03,.515,.955);
+
+/****************************************
+*										*
+*				Custom lists
+*										*
+****************************************/
+
+$custom-list-line-height:		30px;
+$custom-list-counter-size:		40px;
+$custom-list-counter-position:	($custom-list-line-height - $custom-list-counter-size) / 2;
+$custom-list-counter-margin:	40px;
+$custom-list-items-margin:		10px;
+
+/****************************************
+*										*
+*				Dots
+*										*
+****************************************/
+
+$dot-size:						8px;
+$dots-spread:					24px;
+
+/****************************************
+*										*
+*				Navigation
+*										*
+****************************************/
+
+$scrollhide-nav-transition-speed: 1s;
+
+$side-nav-width: (
+	small: 52px,
+	large: 78px
+	);
+
+$off-canvas-gap: (
+	large: 36px
+	);
+
+$off-canvas-left: (
+	xmedium: 52px,
+	large: 78px
+	);
+
+$off-canvas-padding-left: (
+	small: 52px,
+	large: 0px
+	);
+
+$off-canvas-padding-right: (
+	small: 32px,
+	large: 36px
+	);
+
+$off-canvas-padding-top: (
+	small: 70px,
+	large: 88px
+	);
+
+$menu-underline-margin: (
+	small: 16px
+	);

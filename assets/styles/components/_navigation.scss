@@ -1,0 +1,19 @@
+ul.nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	display: inline-block;
+}
+
+.company-logo {
+	display: block;
+	// margin: 8px auto;
+	// text-align: center;
+	.logo {
+		display: block;
+		// margin: auto;
+	}
+}

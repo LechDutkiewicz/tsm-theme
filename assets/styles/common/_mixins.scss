@@ -1,0 +1,463 @@
+@mixin hover-focus {
+  &:focus,
+  &:hover {
+    @content
+  }
+}
+
+@mixin hover-focus-active {
+  &:focus,
+  &:active,
+  &:hover {
+    @content
+  }
+}
+
+/****************************************
+*
+* SPLIT-BG
+* makes element's background evenly split between 2 colors vertically for < breakpoint screen, horizontally for >= breakpoint screen
+*
+****************************************/
+
+@mixin split-bg($color1, $color2, $breakpoint: large) {
+  .column,
+  .columns {
+    padding-top: rem-calc(30);
+    padding-bottom: rem-calc(30);
+    @include breakpoint($breakpoint) {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: rem-calc(70);
+      padding-right: rem-calc(70);
+      &:first-child {
+        padding-left: rem-calc(150);
+        &[class*=large-push] {
+          padding-left: rem-calc(70);
+          padding-right: rem-calc(150);
+        }
+      }
+      &:last-child {
+        padding-right: rem-calc(150);
+        &[class*=large-pull] {
+          padding-right: rem-calc(70);
+          padding-left: rem-calc(150);
+        }
+      }
+    }
+    &:first-child {
+      color: if( lightness( $color1 ) > $treshold-dark-color, $body-font-color, $white );
+      &[class*=large-push] {
+        @include breakpoint($breakpoint) {
+          color: if( lightness( $color2 ) > $treshold-dark-color, $body-font-color, $white );
+        }
+      }
+    }
+    &:last-child {
+      color: if( lightness( $color2 ) > $treshold-dark-color, $body-font-color, $white );
+      &[class*=large-pull] {
+        @include breakpoint($breakpoint) {
+          color: if( lightness( $color1 ) > $treshold-dark-color, $body-font-color, $white );
+        }
+      }
+    }
+  }
+  @include background-image( linear-gradient( to bottom, $color1, $color1 50%, $color2 50% ) );
+  @include breakpoint($breakpoint) {
+    @include background-image( linear-gradient( to right, $color1, $color1 50%, $color2 50% ) );
+  }
+}
+
+/****************************************
+*
+* UNDERLINE
+* makes underline for element
+*
+****************************************/
+
+@mixin underline( $margin: 8px, $padding: 0px, $color: $primary-color, $align: "left", $position: "bottom", $size: 128px, $height: 4px ) {
+  position: relative;
+  display: block;
+
+  @if $position == "bottom" {
+    margin-bottom: $margin;
+    padding-bottom: $padding;
+  }
+  @else {
+    margin-top: $margin;
+    padding-top: $padding;
+  }
+
+  @if $position == "top" {
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: $size;
+      height: $height;
+      background-color: $color;
+
+      @if $position == "bottom" {
+        bottom: 0;
+      }
+      @else {
+        top: 0;
+      }
+
+      @if $align == "left" {
+        left: 0;
+      }
+      @else {
+        left: 50%;
+        @include transform(translateX(-50%));
+      }
+    }
+
+  }
+  @else {
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: $size;
+      height: $height;
+      background-color: $color;
+
+      @if $position == "bottom" {
+        bottom: 0;
+      }
+      @else {
+        top: 0;
+      }
+
+      @if $align == "left" {
+        left: 0;
+      }
+      @else {
+        left: 50%;
+        @include transform(translateX(-50%));
+      }
+    }
+
+  }
+}
+
+/****************************************
+*
+* MAKE DOT
+* makes element nav / slider dot
+*
+****************************************/
+
+@mixin make-dot( $size: $dot-size, $background: $primary-color, $thickness: 2px ) {
+  position: relative;
+  width: $size;
+  height: $size;
+  &:after {
+    content: "";
+    @include absolute-center;
+    background-color: $background;
+    // border: $thickness solid $background;
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+  }
+}
+@mixin make-active-dot() {
+  background: $secondary-color;
+  height: 1.5*$dot-size;
+  width: 1.5*$dot-size;
+}
+
+/****************************************
+*
+* PLACEHOLDER
+* styling for placeholders
+*
+****************************************/
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+/****************************************
+*
+* WEBKIT AUTOFULL
+* styling for autofill
+*
+****************************************/
+
+@include keyframes(autofill) {
+  to {
+    background: transparent;
+    color: $autofill-color;
+    border-color: transparent;
+  }
+}
+
+@mixin webkit-autofill {
+  &:-webkit-autofill {
+    @include animation-name(autofill);
+    @include animation-fill-mode(both);
+  }
+}
+
+/****************************************
+*
+* TSM BUTTON
+* extends foundation-button mixin
+*
+****************************************/
+
+@include keyframes(rotateY) {
+  0% {
+    @include transform(translateY(-50%) rotateY(0));
+    // border-color: red;
+  }
+  100% {
+    @include transform(translateY(-50%) rotateY(360deg));
+    // border-color: black;
+  }
+}
+
+@mixin tsm-button {
+  .button {
+    @include disable-mouse-outline;
+    display: inline-block;
+    vertical-align: middle;
+    margin: $button-margin;
+
+    @if (type-of($button-padding) == 'map') {
+      @each $size, $padding in $button-padding {
+        @include breakpoint($size) {
+          padding: $padding;
+        }
+      }
+    }
+    @else {
+      padding: $button-padding;
+    }
+
+    &-small {
+
+      @if (type-of($button-small-padding) == 'map') {
+        @each $size, $padding in $button-small-padding {
+          @include breakpoint($size) {
+            padding: $padding;
+          }
+        }
+      }
+      @else {
+        padding: $button-small-padding;
+      }
+
+    }
+
+    -webkit-appearance: none;
+    border: $border-button;
+    border-radius: $button-radius;
+    transition: $button-transition;
+
+    // font-size: map-get($button-sizes, default);
+
+    @if (type-of($button-font-size) == 'map') {
+      @each $size, $font-size in $button-font-size {
+        @include breakpoint($size) {
+          font-size: $font-size;
+        }
+      }
+    }
+    @else {
+      padding: $button-font-size;
+    }
+
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    max-width: 100%;
+
+    // Sizes
+    @each $size, $value in map-remove($button-sizes, default) {
+      &-#{$size} {
+        font-size: $value;
+      }
+    }
+
+    background-color: $button-background;
+    color: $button-color;
+
+    @include hover-focus{
+      background-color: $button-background-hover;
+    }
+
+    &.button__icon-img {
+      span {
+        text-align: left;
+        padding-right: $button-icon-size + $button-icon-margin;
+        display: block;
+      }
+      &:after {
+        content: "";
+        @include vertical-center;
+        right: rem-calc(21);
+      }
+      &.loading {
+        &:after {
+          @include animation-name(rotateY);
+          @include animation-duration(2s);
+          @include animation-iteration-count(infinite);
+        }
+      }
+    }
+
+    &.disabled {
+      background-color: $dark-gray;
+      cursor: not-allowed;
+      @include opacity(.6);
+    }
+
+  }
+}
+
+/****************************************
+*
+* TSM TRIANGLE
+* extends css-triangle mixin
+*
+****************************************/
+@mixin tsm-triangle(
+  $triangle-size,
+  $triangle-color,
+  $triangle-direction: right,
+  $append: after,
+  $position: null
+  ) {
+  position: relative;
+  &:#{$append} {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: inset;
+    content: '';
+
+    @if ($position != null) {
+      position: $position;
+    }
+
+    @if ($triangle-direction == down) {
+      border-bottom-width: 0;
+      border-top-style: solid;
+      border-color: $triangle-color transparent transparent;
+      border-width: $triangle-size $triangle-size * .6 0;
+    }
+    @if ($triangle-direction == up) {
+      border-top-width: 0;
+      border-bottom-style: solid;
+      border-color: transparent transparent $triangle-color;
+      border-width: 0 $triangle-size * .6 $triangle-size;
+    }
+    @if ($triangle-direction == right) {
+      border-right-width: 0;
+      border-left-style: solid;
+      border-color: transparent transparent transparent $triangle-color;
+      border-width: $triangle-size * .6 0 $triangle-size * .6 $triangle-size;
+    }
+    @if ($triangle-direction == left) {
+      border-left-width: 0;
+      border-right-style: solid;
+      border-color: transparent $triangle-color transparent transparent;
+      border-width: $triangle-size * .6  $triangle-size $triangle-size * .6 0;
+    }
+  }
+}
+
+/****************************************
+*
+* POSITION MIXINS
+*
+****************************************/
+
+@mixin overlay(
+  $opacity: 1,
+  $background: "transparent"
+  ) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  @if ($opacity < 1) {
+    @include opacity($opacity);
+  }
+  @if ($background != "transparent") {
+    background: $background;
+  }
+}
+
+/****************************************
+*
+* BACKGROUND MIXINS
+*
+****************************************/
+
+@mixin bg-cover {
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+@mixin bg-responsive {
+  @include bg-cover;
+  @include overlay;
+}
+
+/****************************************
+*
+* center vertically and/or horizontally an absolute positioned element
+*
+****************************************/
+
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    @include transform(translateY(-50%));
+  }
+}
+
