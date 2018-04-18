@@ -1,75 +1,129 @@
-// Glyphicons font path
+/*=============================
+=            Paths            =
+=============================*/
+
 $images-path:			"../images/";
 $icon-font-path:        "../fonts/";
 
-// Grid settings
+/*=====  End of Paths  ======*/
+
+
+
+
+
+/*================================================
+=            Foundation grid settings            =
+================================================*/
+
 $main-sm-columns:       12;
 $sidebar-sm-columns:    4;
 
-// Colors
+/*=====  End of Foundation grid settings  ======*/
 
-$white:					#FFFFFF;
+
+
+
+
+/*=============================================
+=            Theme specific colors            =
+=============================================*/
+
+@function colorGet($colorName) {
+	@return map-get($themeColors, $colorName);
+}
+
+@mixin colorSet($colorName, $setting: color) {
+	$setting: colorGet($colorName);
+}
+
+$white:					#ffffff;
 $black:					#000000;
+$cinnabar:				#e74c3c;
+$salmon:				#ff7f67;
+$shiraz:				#ae0c13;
+$gulf-stream:			#84bcad;
+$cruise:				#b5efdf;
+$patina:				#558c7e;
+$buttercup:				#f1c40f;
+$gorse:					#fff653;
+$buddha-gold:			#ba9400;
+$picked-bluewood:		#2c3e50;
+$shuttle-gray:			#57687c;
+$black-pearl:			#031828;
+$silver-sand:			#bdc3c7;
+$cascade:				#95a5a6;
+$porcelain:				#ecf0f0;
 
-$turquoise:				#1abc9c;
-$green-sea:				#16a085;
-$emerald:				#2ecc71;
-$nephritis:				#27ae60;
-$peter-river:			#3498db;
-$belize-hole:			#2980b9;
-$amethyst:				#9b59b6;
-$wisteria:				#8e44ad;
-$wet-asphalt:			#34495e;
-$midnight-blue:			#2c3e50;
-$sun-flower:			#f1c40f;
-$orange:				#f39c12;
-$carrot:				#e67e22;
-$pumpkin:				#d35400;
-$alizarin:				#e74c3c;
-$pomegranate:			#c0392b;
-$clouds:				#ecf0f1;
-$silver:				#bdc3c7;
-$concrete:				#95a5a6;
-$asbestos:				#7f8c8d;
+$themeColors : (
+	'white':			$white,
+	'black':			$black,
+	'cinnabar':			$cinnabar,
+	'salmon':			$salmon,
+	'shiraz':			$shiraz,
+	'gulf-stream':		$gulf-stream,
+	'cruise':			$cruise,
+	'patina':			$patina,
+	'buttercup':		$buttercup,
+	'gorse':			$gorse,
+	'buddha-gold':		$buddha-gold,
+	'picked-bluewood':	$picked-bluewood,
+	'shuttle-gray':		$shuttle-gray,
+	'black-pearl':		$black-pearl,
+	'silver-sand':		$silver-sand,
+	'cascade':			$cascade,
+	'porcelain':		$porcelain,
+	);
 
 // accent for icons, bullets, etc
-$primary-color:			$amethyst;
-$secondary-color:		$sun-flower;
+$primary-color:			$cinnabar;
+$secondary-color:		$gulf-stream;
 
-$success-color:			$green-sea;
-$warning-color:			$pumpkin;
-$alert-color:			$pomegranate;
-$light-gray-color:		$silver;
-$medium-gray-color:		$concrete;
-$dark-gray-color:		$asbestos;
+$success-color:			$patina;
+$warning-color:			$buddha-gold;
+$alert-color:			$cinnabar;
+$light-gray-color:		$picked-bluewood;
+$medium-gray-color:		$shuttle-gray;
+$dark-gray-color:		$black-pearl;
 
-$autofill-color:		$sun_flower;
+$autofill-color:		$buttercup;
 
-/**
- *
- * Grid
- *
- */
+$body-font-color: 		$black-pearl;
+
+/*=====  End of Theme specific colors  ======*/
 
 
-$column-huge-guter:		140;
 
-/**
- *
- * Responsive
- *
- */
 
-$mobile:				medium down;
-$tablet:				medium;
-$desktop:				xlarge;
+
+/*==============================================
+=            Responsive breakpoints            =
+==============================================*/
+
+$mobile:				xsmall down;
+$mobile-large:			xsmall;
+$mobile-horizontal:		medium;
+$tablet:				xmedium;
+$desktop:				large;
 $desktop-large:			xxlarge;
 
-/****************************************
-*										*
-*				Header tags
-*										*
-****************************************/
+$theme-breakpoints: (
+	'mobile':				$mobile,
+	'mobile-large':			$mobile-large,
+	'mobile-horizontal':	$mobile-horizontal,
+	'tablet':				$tablet,
+	'desktop':				$desktop,
+	'desktop-large':		$desktop-large,
+	);
+
+/*=====  End of Responsive breakpoints  ======*/
+
+
+
+
+
+/*============================================
+=            Typography variables            =
+============================================*/
 
 $headerTagsList: (
 	"h1",
@@ -80,79 +134,191 @@ $headerTagsList: (
 	"h6"
 	);
 
-/****************************************
-*										*
-*				Borders
-*										*
-****************************************/
+/*=====  End of Typography variables  ======*/
 
-/****************************************
-*										*
-*				Transitions
-*										*
-****************************************/
+
+
+
+
+/*===================================
+=            Transitions            =
+===================================*/
 
 $cubic-transition:				.5s cubic-bezier(.455,.03,.515,.955);
 $cubic-transition-fast:			.15s cubic-bezier(.455,.03,.515,.955);
 
-/****************************************
-*										*
-*				Custom lists
-*										*
-****************************************/
+/*=====  End of Transitions  ======*/
 
-$custom-list-line-height:		30px;
-$custom-list-counter-size:		40px;
-$custom-list-counter-position:	($custom-list-line-height - $custom-list-counter-size) / 2;
-$custom-list-counter-margin:	40px;
-$custom-list-items-margin:		10px;
 
-/****************************************
-*										*
-*				Dots
-*										*
-****************************************/
+
+
+
+/*=======================================
+=            Slider settings            =
+=======================================*/
 
 $dot-size:						8px;
 $dots-spread:					24px;
 
-/****************************************
-*										*
-*				Navigation
-*										*
-****************************************/
+/*=====  End of Slider settings  ======*/
 
-$scrollhide-nav-transition-speed: 1s;
 
-$side-nav-width: (
-	small: 52px,
-	large: 78px
+
+
+
+/*============================================
+=            Navigation variables            =
+============================================*/
+
+$header-bar-height:				(
+	small: 60px,
 	);
 
-$off-canvas-gap: (
-	large: 36px
-	);
+$hamburger-size:				36px;
+$hamburger-bar-size:			2px;
+$hamburger-color:				$white;
+$hamburger-letter-spacing:		.5px;
+$hamburger-menu-text-weight:	bold;
 
-$off-canvas-left: (
-	xmedium: 52px,
-	large: 78px
-	);
+$mobile-nav-font-size:			16px;
+$mobile-nav-font-weight:		600;
+$mobile-nav-color:				$body-font-color;
+$mobile-nav-current-color:		$mobile-nav-color;
+$mobile-nav-letter-spacing:		2px;
+$mobile-nav-bg:					$porcelain;
+$mobile-nav-container-padding:  25px 20px 0;
+$mobile-nav-elements-margin:	20px;
 
-$off-canvas-padding-left: (
-	small: 52px,
-	large: 0px
-	);
+$mobile-nav-cta-color:			$cascade;
 
-$off-canvas-padding-right: (
-	small: 32px,
-	large: 36px
-	);
+$desktop-nav-font-size:			18px;
+$desktop-nav-font-weight:		400;
+$desktop-nav-color:				$white;
+$desktop-nav-letter-spacing:	.5px;
+$desktop-nav-item-margin:		20px;
 
-$off-canvas-padding-top: (
-	small: 70px,
-	large: 88px
-	);
+$cta-nav-bg:					$picked-bluewood;
 
-$menu-underline-margin: (
-	small: 16px
-	);
+/*=====  End of Navigation variables  ======*/
+
+
+
+
+/*====================================
+=            Testimonials            =
+====================================*/
+
+$testimonials-border-color:		$patina;
+
+/*=====  End of Testimonials  ======*/
+
+
+
+
+
+
+/*============================
+=            Tabs            =
+============================*/
+
+$tabs-triangle-size:			12px;
+$active-tab-margin:				$tabs-triangle-size + 8px;
+
+/*=====  End of Tabs  ======*/
+
+
+
+
+
+/*===============================================
+=            Borders and box shadows            =
+===============================================*/
+
+$theme-box-shadow:				0px 0px 3px rgba($black-pearl, .7);
+
+/*=====  End of Borders and box shadows  ======*/
+
+
+
+
+
+
+/*==================================
+=            Cookie bar            =
+==================================*/
+
+$cookie-bar-font-size:			14px;
+$cookie-bar-color:				$body-font-color;
+
+/*=====  End of Cookie bar  ======*/
+
+
+
+
+
+/*==============================================
+=            Contact form variables            =
+==============================================*/
+
+$contact-form-accent:			$cinnabar;
+$contact-form-secondary:		$shuttle-gray;
+
+$label-margin-top:				8px;
+$label-line-height:				1.5;
+
+/*=====  End of Contact form variables  ======*/
+
+
+
+
+
+/*=======================================================
+=            Images, figures and other media            =
+=======================================================*/
+
+$figcaption-margin-top:			15px;
+$figcaption-font-size:			10px;
+$figcaption-link-color:			$cascade;
+
+/*=====  End of Images, figures and other media  ======*/
+
+
+
+
+
+/*===================================
+=            animate.css            =
+===================================*/
+
+$use-fadeIn:					true;
+$use-fadeInLeft:				true;
+$use-fadeInRight:				true;
+$use-fadeInUp:					true;
+$use-fadeInDown:				true;
+$use-fadeOutLeft:				true;
+$use-fadeOutRight:				true;
+$use-fadeOutUp:					true;
+$use-fadeOutDown:				true;
+
+$use-slideInLeft:				true;
+$use-slideInRight:				true;
+$use-slideOutLeft:				true;
+$use-slideOutRight:				true;
+
+$use-flipInX:					true;
+$use-flipOutX:					true;
+
+
+/*=====  End of animate.css  ======*/
+
+
+
+
+
+/*==================================
+=            SVG shapes            =
+==================================*/
+
+$svg_loading_spinner: '<svg width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-wedges" style="background: #{$white};"><g transform="translate(50,50)"><g ng-attr-transform="scale({{config.scale}})" transform="scale(1)"><g transform="translate(-50,-50)"><g transform="rotate(280 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="0.75s" begin="0s" repeatCount="indefinite"></animateTransform><path ng-attr-fill-opacity="{{config.opacity}}" ng-attr-fill="{{config.c1}}" d="M50 50L50 0A50 50 0 0 1 100 50Z" fill-opacity="1" fill="#{$primary-color}"></path></g><g transform="rotate(300 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform><path ng-attr-fill-opacity="{{config.opacity}}" ng-attr-fill="{{config.c2}}" d="M50 50L50 0A50 50 0 0 1 100 50Z" transform="rotate(90 50 50)" fill-opacity="1" fill="#{$secondary-color}"></path></g><g transform="rotate(320 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1.5s" begin="0s" repeatCount="indefinite"></animateTransform><path ng-attr-fill-opacity="{{config.opacity}}" ng-attr-fill="{{config.c3}}" d="M50 50L50 0A50 50 0 0 1 100 50Z" transform="rotate(180 50 50)" fill-opacity="1" fill="#{$autofill-color}"></path></g><g transform="rotate(340 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="3s" begin="0s" repeatCount="indefinite"></animateTransform><path ng-attr-fill-opacity="{{config.opacity}}" ng-attr-fill="{{config.c4}}" d="M50 50L50 0A50 50 0 0 1 100 50Z" transform="rotate(270 50 50)" fill-opacity="1" fill="#{$light-gray-color}"></path></g></g></g></g></svg>';
+
+/*=====  End of SVG shapes  ======*/

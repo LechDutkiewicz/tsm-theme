@@ -2,6 +2,7 @@
   "dependencies": {
     "main.js": {
       "files": [
+        "../lib/extensions/**/*.js",
         "scripts/components/*.js",
         "scripts/main.js"
       ],
@@ -33,6 +34,6 @@
     }
   },
   "config": {
-    "devUrl": "http://localhost/ksiaznica"
+    "devUrl": "http://localhost/dom-nadziei"
   }
 }

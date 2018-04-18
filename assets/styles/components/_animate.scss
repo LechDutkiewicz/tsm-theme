@@ -1,0 +1,22 @@
+/*!
+ * Theme animations
+ *
+ */
+
+ .animated {
+	@for $n from 1 through 50 {
+		&.delay#{$n}s {
+			@include animation-delay( $n * .1s );
+		}
+	}
+}
+
+/*====================================================================
+=            Class for content with animation fired by js            =
+====================================================================*/
+
+[data-animated] {
+	@include opacity(0);
+}
+
+/*=====  End of Class for content with animation fired by js  ======*/

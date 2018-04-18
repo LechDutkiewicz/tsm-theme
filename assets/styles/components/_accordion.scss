@@ -1,0 +1,111 @@
+/*!
+ * Foundation accordion customization
+ *
+ */
+
+ .accordion {
+ 	margin-bottom: 0;
+ 	&-title {
+ 		text-transform: uppercase;
+ 		letter-spacing: 2px;
+ 		line-height: 1.7;
+ 	}
+ 	&-content {
+ 		p:last-child {
+ 			margin-bottom: 0;
+ 		}
+ 		&--boxed {
+ 			padding: rem-calc(15);
+ 			border: solid $accordion-item-color;
+ 			border-width: 0 5px;
+ 			background: $white;
+ 			color: $body-font-color;
+ 			h5 {
+ 				text-transform: uppercase;
+ 				font-weight: 700;
+ 				font-size: rem-calc(17);
+ 				letter-spacing: .3px;
+ 			}
+ 		}
+ 	}
+ 	&__nested {
+ 		&--parent {
+ 			> .accordion-item {
+ 				&:first-child {
+ 					> .accordion-title {
+ 						border-top-width: 1px;
+ 					}
+ 				}
+ 				> .accordion-title {
+ 					border-style: solid;
+ 					border-bottom-width: 1px;
+ 					font-weight: 700;
+ 					font-size: rem-calc(20);
+ 					line-height: 1.7;
+ 				}
+ 				&.is-active {
+ 					> .accordion-title {
+ 						border-bottom-width: 0;
+ 					}
+ 					> .accordion-content {
+ 						border-bottom: 1px solid $accordion-item-color;
+ 					}
+ 				}
+ 			}
+ 		}
+ 		&--child {
+ 			> .accordion-item {
+ 				> .accordion-title {
+ 					color: $white;
+ 					&:after {
+ 						display: inline-block;
+ 						margin-left: rem-calc(5);
+ 						/* use !important to prevent issues with browser extensions that change fonts */
+ 						font-family: 'icomoon' !important;
+ 						speak: none;
+ 						font-style: normal;
+ 						font-weight: normal;
+ 						font-variant: normal;
+ 						text-transform: none;
+ 						line-height: 1;
+
+ 						/* Better Font Rendering =========== */
+ 						-webkit-font-smoothing: antialiased;
+ 						-moz-osx-font-smoothing: grayscale;
+ 						content: '\f3d0';
+ 						@include transition(transform $cubic-transition); 
+ 					}
+ 					&[aria-expanded=true] {
+ 						&:after {
+ 							@include transform(rotate(180deg));
+ 						}
+ 					}
+ 				}
+ 				> .accordion-content {
+ 					font-size: rem-calc(14);
+ 					line-height: 1.6;
+ 					// padding-left: rem-calc(20);
+ 					// border-left: 1px solid;
+ 					// padding-bottom: 0;
+ 					margin-bottom: 28px;					
+ 					padding: rem-calc(15);
+ 					border: solid $accordion-item-color;
+ 					border-width: 0 5px;
+ 					background: $white;
+ 					color: $body-font-color;
+ 					h5 {
+ 						text-transform: uppercase;
+ 						font-weight: 700;
+ 						font-size: rem-calc(17);
+ 						letter-spacing: .3px;
+ 					}
+ 				}
+ 				&.is-active {
+ 					> .accordion-title {
+ 						padding-bottom: 28px;
+ 					}
+ 				}
+ 			}
+ 		}
+ 	}
+ }

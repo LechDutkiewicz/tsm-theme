@@ -1,0 +1,11 @@
+/*!
+ * Loading spinner
+ *
+ */
+
+ .loading__spinner {
+	@include aspect-ratio();
+	@include background-svg($svg_loading_spinner);
+	background-repeat: no-repeat;
+	background-position: center 25vh;
+}

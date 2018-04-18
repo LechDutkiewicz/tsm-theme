@@ -1,46 +1,57 @@
-/****************************************
-*										*
-*		Opened navigation				*
-*										*
-****************************************/
+/*!
+ * Mobile navigation
+ *
+ */
+
+ /*=========================================
+=            Mobile navigation            =
+=========================================*/
 
 .menu__mobile {
 	float: none;
-	position: absolute;
+	position: fixed;
 	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	min-height: 100vh;
-	margin: 0;
-	background: $white;
+	bottom: 0;
+	width: 100vw;
+
+	@if (type-of($header-bar-height) == 'map') {
+		@each $size, $height in $header-bar-height {
+			@include breakpoint($size) {
+				top: $height;
+			}
+		}
+	}
+
+	padding: $mobile-nav-container-padding;
+	background: $mobile-nav-bg;
+	// @include background-image( linear-gradient( to bottom, $mobile-nav-bg, rgba($mobile-nav-bg, .95) 10% ) );
 	visibility: hidden;
-	opacity: 0;
+	@include opacity(0)
 	z-index: 10;
 	box-sizing: border-box;
-	@include transition( opacity, $cubic-transition-fast );
 	@include flex-align( center, top );
+	// @include transition(opacity $cubic-transition);
 	ul.menu {
 		list-style-type: none;
 		&:not(.submenu) {
-			padding: $global-padding * 2 0;
-			@include xy-cell(75%);
+			@include flex-grid-column(100%);
 		}
 		li {
-			opacity: 0;
+			@include opacity(0);
 			@include transform( translateY(20px) );
 			@include transition( (translate, opacity), $cubic-transition );
 			a {
-				font-size: $lead-font-size;
-				font-weight: $subheader-font-weight;
-				color: $body-font-color;
+				font-size: rem-calc($mobile-nav-font-size);
+				font-weight: $mobile-nav-font-weight;
+				color: $mobile-nav-color;
 				text-transform: uppercase;
+				letter-spacing: $mobile-nav-letter-spacing;
 				@include transition( color $cubic-transition );
 			}
 			&.current-menu-item,
 			&:hover, &:focus {
 				> a {
-					color: $primary-color;
+					color: $mobile-nav-current-color;
 				}
 			}
 		}
@@ -57,32 +68,108 @@
 			}
 		}
 	}
-	&--container {
-		position: relative;
-	}
 }
 
 body.open-menu {
-	overflow: hidden!important;
-	.hamburger {
-		.bar-top {
-			@include transform( rotate(-45deg) );
-		}
-		.bar-middle {
-			@include opacity(0);
-		}
-		.bar-bottom {
-			@include transform( rotate(45deg) );
-		}
+	@include breakpoint(large down) {
+		overflow: hidden!important;
 	}
 	.menu__mobile {
+		height: auto;
 		visibility: visible;
-		opacity: 1;
+		@include opacity(1);
 		ul.menu {
 			li {
-				opacity: 1;
+				@include opacity(1);
 				@include transform( translateY(0) );
 			}
 		}
 	}
 }
+
+/*=====  End of Mobile navigation  ======*/
+
+/*===========================================
+=            Theme customization            =
+===========================================*/
+
+.menu__mobile {
+	> ul.menu {
+		&:not(.submenu) {
+			padding: 0 0 rem-calc($mobile-nav-elements-margin);
+			margin-bottom: rem-calc($mobile-nav-elements-margin);
+			border-bottom: 2px solid $mobile-nav-color;
+		}
+		> li {
+			&:not(:last-child) {
+				margin-bottom: rem-calc($mobile-nav-elements-margin);
+			}
+			> a {
+				padding: 0;
+			}
+		}
+	}
+	&--contact {
+		h3 {
+			font-size: rem-calc($mobile-nav-font-size);
+			font-weight: $mobile-nav-font-weight;
+			color: $mobile-nav-color;
+			text-transform: uppercase;
+			letter-spacing: $mobile-nav-letter-spacing;
+		}
+		.vcard {
+			color: $mobile-nav-color;
+			> * {
+				@include flex-grid-row();
+			}
+		}
+	}
+}
+
+/*=====  End of Theme customization  ======*/
+
+/*==========================================
+=            Navigation buttons            =
+==========================================*/
+
+$mobile-nav-button-size:		map-get($header-bar-height, 'small');
+
+.nav {
+	&__btn {			
+		height: rem-calc($mobile-nav-button-size);
+		width: rem-calc($mobile-nav-button-size * .9);
+		text-align: center;
+		line-height: rem-calc($mobile-nav-button-size);
+		margin: 0;
+		border: none;
+		i {
+			color: $white;
+			font-size: rem-calc(25);
+			vertical-align: middle;
+			margin: 0;
+		}
+		&--left {
+			float: left;
+		}
+		&--right {
+			float: right;
+		}
+	}
+	&__cta {
+		&--call {
+			background: $mobile-nav-cta-color;
+		}
+		&--drive {
+			background: $mobile-nav-bg;
+			i {
+				color: $body-font-color;
+			}
+		}
+		&--menu {
+			background: $mobile-nav-cta-color;
+		}
+	}
+}
+
+/*=====  End of Navigation buttons  ======*/
+

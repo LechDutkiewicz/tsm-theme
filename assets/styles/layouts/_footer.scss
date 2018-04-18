@@ -1,0 +1,7 @@
+footer {
+	font-size: rem-calc(12);
+	color: $light-gray-color;
+	@include breakpoint($desktop) {
+		font-size: rem-calc(14);
+	}
+}

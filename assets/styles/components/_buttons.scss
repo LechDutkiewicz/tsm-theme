@@ -1,0 +1,114 @@
+/*!
+ * Theme buttons
+ *
+ */
+
+ @each $name, $color in $themeColors {
+	.button__80--#{$name} {
+		@include button-style(rgba($color, .8), scale-color($color, $lightness: -15%), auto);
+	}
+}
+
+/*====================================================================
+=            Default foundation buttons styling overwrite            =
+====================================================================*/
+
+.button {
+	&__cta,
+	&__cta.expanded {
+		display: flex;
+		flex-flow: row wrap;
+	}
+	&__cta {
+		text-transform: uppercase;
+		margin-bottom: rem-calc(8);
+		line-height: 1.2;
+		padding-left: 0;
+		padding-right: 0;
+		font-size: rem-calc(14);
+		@include flex-align( justify, middle );
+		> span {
+			@include flex-grid-column( expand );
+			text-align: left;
+		}
+		> i {
+			@include flex-grid-column( shrink );
+			font-size: rem-calc(26);
+		}
+		@include breakpoint($tablet) {
+			padding: rem-calc(14) 0;
+			font-size: rem-calc(17);
+			> i {
+				font-size: rem-calc(36);
+			}
+		}
+		@include breakpoint($desktop) {
+			margin-bottom: 0;
+			padding: rem-calc(11) 0;
+			font-size: rem-calc(19);
+			> i {
+				font-size: rem-calc(32);
+			}		
+		}
+
+		/*----------  Small cta button  ----------*/
+		
+		&--small {
+			font-size: rem-calc(14);
+			letter-spacing: 3px;
+			> i {
+				font-size: rem-calc(20);
+			}
+			@include breakpoint($tablet) {
+				padding: rem-calc(6) 0;
+				> i {
+					font-size: rem-calc(24);
+				}
+			}
+			@include breakpoint($desktop) {
+				padding: rem-calc(8) 0;
+			}
+		}
+
+		/*----------  Huge cta button  ----------*/
+		
+		&--huge {
+			font-weight: 600;
+			> i {
+				font-size: rem-calc(26);
+			}
+			@include breakpoint($tablet) {
+				padding: rem-calc(14) 0;
+				font-size: rem-calc(20);
+				> i {
+					font-size: rem-calc(36);
+				}
+			}
+			@include breakpoint($desktop) {
+				padding: rem-calc(19) 0;
+				font-size: rem-calc(25);
+				> i {
+					font-size: rem-calc(48);
+				}
+			}
+		}
+	}
+}
+
+/*=====  End of Default foundation buttons styling overwrite  ======*/
+
+
+
+
+/*===================================================
+=            Footer scroll to top button            =
+===================================================*/
+
+.scroll__top {
+	&--button {
+		@include flex-grid-row();
+		min-width: 260px;
+	}
+}
+
+/*=====  End of Footer scroll to top button  ======*/

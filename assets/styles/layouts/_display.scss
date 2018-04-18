@@ -1,0 +1,46 @@
+/*===============================================
+=            Vertical align children            =
+===============================================*/
+
+.va__t {
+	&--children {
+		> * {
+			vertical-align: top;
+		}
+	}
+}
+
+.va__m {
+	display: inline-block;
+	vertical-align: middle;	
+	&--children {
+		> * {
+			vertical-align: middle;
+		}
+	}
+}
+
+/*=====  End of Vertical align children  ======*/
+
+
+
+/*==========================================
+=            Display like table            =
+==========================================*/
+
+.display {
+	&__table {
+		display: table;
+		width: 100%;
+		height: 100%;
+		&--cell {
+			display: table-cell;
+			vertical-align: middle;
+			margin: 0;
+			padding: 0
+		}
+	}
+}
+
+/*=====  End of Display like table  ======*/
+

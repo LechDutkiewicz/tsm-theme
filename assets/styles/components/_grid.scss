@@ -1,1 +1,15 @@
+/*!
+ * Foundation grid customization
+ *
+ */
 
+@each $breakpoint-name, $breakpoint in $theme-breakpoints {
+	// Horizontal alignment using justify-content
+	@each $hdir, $prop in map-remove($-zf-flex-justify, 'left') {
+		.align-#{$hdir}--#{$breakpoint-name} {
+			@include breakpoint($breakpoint) {
+				@include flex-align($x: $hdir);
+			}
+		}
+	}
+}

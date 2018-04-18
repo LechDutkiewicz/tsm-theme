@@ -1,59 +1,90 @@
-// html.has-cookie-bar.cookie-bar-top-bar {
-// 	margin-top: 30px;
-// 	@include transition( all .25s );
-// }
-#catapult-cookie-bar {
+/*!
+ * Cookie bar
+ *
+ */
+
+ #catapult-cookie-bar {
 	position: fixed;
 	@include box-sizing(border-box);
 	left: 0;
 	right: 0;
 	bottom: 0;
-	box-shadow: 0 0 3px;
 	max-height: 0;
 	opacity: 0;
+	font-size: rem-calc($cookie-bar-font-size);
+	color: $cookie-bar-color;
 	direction: ltr;
-	padding: 0 20px;
+	padding: 0 rem-calc(20);
 	z-index: 99999;
 	overflow: hidden;
 	text-align:left;
 	@include transition( all .25s );
 	background-color: rgba( $white, .95 );
+	@include box-shadow($theme-box-shadow);
 }
-#catapult-cookie-bar.drop-shadow {
-	@include box-shadow( 0px 3px 9px 0px rgba(0,0,0,0.4) );
-}
+
+
 .cookie-bar-block #catapult-cookie-bar {
 	max-height: 999px;
 	@include transition( opacity .25s );
 }
+
+
 .has-cookie-bar #catapult-cookie-bar {
 	opacity: 1;
 	max-height: 999px;
 	min-height: 30px;
-	padding: 10px 20px;
+	padding: rem-calc(10) rem-calc(12);
 }
+
+
 .cookie-bar-block #catapult-cookie-bar span {
 	display: block;
 	margin: 1em 0;
 }
-button#catapultCookie {
-	@include button( false, $body-font-color, auto, auto, hollow );
 
+
+button#catapultCookie {
+	@include button( false, $cookie-bar-color, auto, auto, hollow );
+	margin-top: rem-calc(10);
+	margin-bottom: 0;
+	text-transform: uppercase;
+	@include breakpoint( $tablet ) {
+		margin-top: 0;
+	}
 }
-.cookie-bar-bar button#catapultCookie {
-	margin: 0;
-}
+
+
 .cookie-bar-bar .ctcc-inner {
-	@include xy-grid();
+	> * {
+		display: block;
+	}
 }
 @include breakpoint( $tablet ) {
 	.cookie-bar-bar .ctcc-inner {
+		@include flex-grid-row();
 		@include flex-align( justify, middle );
 	}
 	.ctcc-left-side {
-		@include xy-cell-base( auto );
+		@include flex-grid-column( expand );
 	}
 	.ctcc-right-side {
-		@include xy-cell-base( shrink );
+		@include flex-grid-column( shrink );
 	}
 }
+
+/*==============================================================================
+=            Adjust position of elements when cookie box is visible            =
+==============================================================================*/
+
+.has-cookie-bar {
+	.cookies__adjust {
+		// margin-bottom: rem-calc(20);
+		margin-bottom: rem-calc(112);
+		@include breakpoint($tablet) {
+			margin-bottom: 0;
+		}
+	}
+}
+
+/*=====  End of Adjust position of elements when cookie box is visible  ======*/

@@ -4,13 +4,14 @@
 @import 'compass/css3/transition';
 @import 'compass/css3/transform';
 
+@import "common/mixins";
 @import "common/variables";
 @import "settings/_settings";
-@import "common/mixins";
 
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
 @import "../../bower_components/foundation-sites/scss/foundation.scss";
+@import "../../bower_components/animate-sass/_animate.scss";
 // endbower
 
 // @include foundation-everything;
@@ -42,26 +43,26 @@
 // @include foundation-breadcrumbs;
 // @include foundation-button-group;
 // @include foundation-callout;
-// @include foundation-card;
+@include foundation-card;
 @include foundation-close-button;
 @include foundation-menu;
 @include foundation-menu-icon;
-// @include foundation-drilldown-menu;
+@include foundation-drilldown-menu;
 @include foundation-dropdown;
 @include foundation-dropdown-menu;
-// @include foundation-responsive-embed;
+@include foundation-responsive-embed;
 // @include foundation-label;
 // @include foundation-media-object;
 @include foundation-off-canvas;
-// @include foundation-orbit;
-// @include foundation-pagination;
+@include foundation-orbit;
+@include foundation-pagination;
 // @include foundation-progress-bar;
-// @include foundation-slider;
+@include foundation-slider;
 // @include foundation-sticky;
-// @include foundation-reveal;
+@include foundation-reveal;
 // @include foundation-switch;
 // @include foundation-table;
-// @include foundation-tabs;
+@include foundation-tabs;
 // @include foundation-thumbnail;
 @include foundation-title-bar;
 // @include foundation-tooltip;
@@ -71,23 +72,49 @@
 
 // @include motion-ui-transitions;
 
+/*!
+ * Template global styles
+ *
+ */
+
+@import "common/svg-mixins";
 @import "common/global";
 @import "common/colors";
+
+@import "components/theme_icon_font";
+
+@import "components/accordion";
+@import "components/animate";
 @import "components/buttons";
 @import "components/cookie_bar";
-@import "components/comments";
 @import "components/forms";
 @import "components/grid";
 @import "components/hamburger";
+@import "components/label";
+@import "components/loading-spinner";
 @import "components/lists";
 @import "components/navigation";
 @import "components/navigation_mobile";
+@import "components/separator";
 @import "components/sprite";
-@import "components/theme_font";
-@import "layouts/images";
-@import "layouts/header";
-@import "layouts/sidebar";
+@import "components/tabs";
+@import "components/typography";
+
+/*!
+ * Template specific layouts
+ *
+ */
+
+@import "layouts/animations";
+@import "layouts/background";
+@import "layouts/contact-items";
+@import "layouts/display";
 @import "layouts/footer";
+@import "layouts/header";
+@import "layouts/images";
 @import "layouts/pages";
 @import "layouts/posts";
+@import "layouts/sidebar";
+@import "layouts/table";
+@import "layouts/testimonials";
 @import "layouts/tinymce";

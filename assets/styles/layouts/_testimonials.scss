@@ -1,0 +1,73 @@
+.testimonial {
+	&__inner {
+		height: 100%;
+		border: 1px solid;
+		padding: rem-calc(10) rem-calc(8);
+		border-color: $testimonials-border-color;
+		box-shadow: inset 0 0 6px rgba($testimonials-border-color, .3);
+		@include breakpoint($tablet) {
+			padding: rem-calc(25) rem-calc(30);
+		}
+
+		/*----------  Quote icon  ----------*/
+
+		i {
+			color: $alert-color;
+			display: block;
+			margin: 0 auto;
+			border: 1px solid $primary-color;
+			border-radius: 50%;
+			width: 45px;
+			height: 45px;
+			line-height: 45px;
+			font-size: rem-calc(24);
+			text-align: center;
+			@include breakpoint($tablet) {
+				width: 60px;
+				height: 60px;
+				line-height: 60px;
+				font-size: rem-calc(32);
+			}
+		}		
+	}
+
+	/*----------  Content  ----------*/
+
+	&__content {
+		font-size: rem-calc(14);
+		margin: rem-calc(24) 0;
+		font-style: italic;
+		text-align: center;
+		@include breakpoint($tablet) {
+			font-size: rem-calc(20);
+		}
+		p:last-child {
+			margin: 0;
+		}
+	}
+
+	/*----------  Author meta  ----------*/
+	
+	&__person,
+	&__company,
+	&__source {
+		text-align: right;
+		font-size: rem-calc(12);
+	}
+
+	&__person {
+		font-weight: 700;
+		margin-top: rem-calc(20);
+		color: $medium-gray-color;
+	}
+
+	&__company {
+		margin-top: rem-calc(6);
+		color: $light-gray-color;
+	}
+
+	&__source {
+		margin-top: rem-calc(6);
+	}
+	
+}

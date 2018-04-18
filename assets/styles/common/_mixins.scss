@@ -15,61 +15,6 @@
 
 /****************************************
 *
-* SPLIT-BG
-* makes element's background evenly split between 2 colors vertically for < breakpoint screen, horizontally for >= breakpoint screen
-*
-****************************************/
-
-@mixin split-bg($color1, $color2, $breakpoint: large) {
-  .column,
-  .columns {
-    padding-top: rem-calc(30);
-    padding-bottom: rem-calc(30);
-    @include breakpoint($breakpoint) {
-      padding-top: 0;
-      padding-bottom: 0;
-      padding-left: rem-calc(70);
-      padding-right: rem-calc(70);
-      &:first-child {
-        padding-left: rem-calc(150);
-        &[class*=large-push] {
-          padding-left: rem-calc(70);
-          padding-right: rem-calc(150);
-        }
-      }
-      &:last-child {
-        padding-right: rem-calc(150);
-        &[class*=large-pull] {
-          padding-right: rem-calc(70);
-          padding-left: rem-calc(150);
-        }
-      }
-    }
-    &:first-child {
-      color: if( lightness( $color1 ) > $treshold-dark-color, $body-font-color, $white );
-      &[class*=large-push] {
-        @include breakpoint($breakpoint) {
-          color: if( lightness( $color2 ) > $treshold-dark-color, $body-font-color, $white );
-        }
-      }
-    }
-    &:last-child {
-      color: if( lightness( $color2 ) > $treshold-dark-color, $body-font-color, $white );
-      &[class*=large-pull] {
-        @include breakpoint($breakpoint) {
-          color: if( lightness( $color1 ) > $treshold-dark-color, $body-font-color, $white );
-        }
-      }
-    }
-  }
-  @include background-image( linear-gradient( to bottom, $color1, $color1 50%, $color2 50% ) );
-  @include breakpoint($breakpoint) {
-    @include background-image( linear-gradient( to right, $color1, $color1 50%, $color2 50% ) );
-  }
-}
-
-/****************************************
-*
 * UNDERLINE
 * makes underline for element
 *
@@ -207,12 +152,16 @@
 *
 ****************************************/
 
-@include keyframes(autofill) {
-  to {
-    background: transparent;
-    color: $autofill-color;
-    border-color: transparent;
+@mixin add-autofill($color) {
+
+  @include keyframes(autofill) {
+    to {
+      background: transparent;
+      color: $color;
+      border-color: transparent;
+    }
   }
+
 }
 
 @mixin webkit-autofill {
@@ -224,128 +173,7 @@
 
 /****************************************
 *
-* TSM BUTTON
-* extends foundation-button mixin
-*
-****************************************/
-
-@include keyframes(rotateY) {
-  0% {
-    @include transform(translateY(-50%) rotateY(0));
-    // border-color: red;
-  }
-  100% {
-    @include transform(translateY(-50%) rotateY(360deg));
-    // border-color: black;
-  }
-}
-
-@mixin tsm-button {
-  .button {
-    @include disable-mouse-outline;
-    display: inline-block;
-    vertical-align: middle;
-    margin: $button-margin;
-
-    @if (type-of($button-padding) == 'map') {
-      @each $size, $padding in $button-padding {
-        @include breakpoint($size) {
-          padding: $padding;
-        }
-      }
-    }
-    @else {
-      padding: $button-padding;
-    }
-
-    &-small {
-
-      @if (type-of($button-small-padding) == 'map') {
-        @each $size, $padding in $button-small-padding {
-          @include breakpoint($size) {
-            padding: $padding;
-          }
-        }
-      }
-      @else {
-        padding: $button-small-padding;
-      }
-
-    }
-
-    -webkit-appearance: none;
-    border: $border-button;
-    border-radius: $button-radius;
-    transition: $button-transition;
-
-    // font-size: map-get($button-sizes, default);
-
-    @if (type-of($button-font-size) == 'map') {
-      @each $size, $font-size in $button-font-size {
-        @include breakpoint($size) {
-          font-size: $font-size;
-        }
-      }
-    }
-    @else {
-      padding: $button-font-size;
-    }
-
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: 2px;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
-    position: relative;
-    max-width: 100%;
-
-    // Sizes
-    @each $size, $value in map-remove($button-sizes, default) {
-      &-#{$size} {
-        font-size: $value;
-      }
-    }
-
-    background-color: $button-background;
-    color: $button-color;
-
-    @include hover-focus{
-      background-color: $button-background-hover;
-    }
-
-    &.button__icon-img {
-      span {
-        text-align: left;
-        padding-right: $button-icon-size + $button-icon-margin;
-        display: block;
-      }
-      &:after {
-        content: "";
-        @include vertical-center;
-        right: rem-calc(21);
-      }
-      &.loading {
-        &:after {
-          @include animation-name(rotateY);
-          @include animation-duration(2s);
-          @include animation-iteration-count(infinite);
-        }
-      }
-    }
-
-    &.disabled {
-      background-color: $dark-gray;
-      cursor: not-allowed;
-      @include opacity(.6);
-    }
-
-  }
-}
-
-/****************************************
-*
-* TSM TRIANGLE
+* tsm TRIANGLE
 * extends css-triangle mixin
 *
 ****************************************/
@@ -414,7 +242,7 @@
     @include opacity($opacity);
   }
   @if ($background != "transparent") {
-    background: $background;
+    background-color: $background;
   }
 }
 
@@ -426,13 +254,18 @@
 
 @mixin bg-cover {
   background-size: cover;
-  background-position: 50%;
   background-repeat: no-repeat;
 }
 
 @mixin bg-responsive {
   @include bg-cover;
   @include overlay;
+}
+
+@mixin bg-responsive-mobile {
+  @include bg-cover;
+  @include overlay;
+  background-position: right top;
 }
 
 /****************************************

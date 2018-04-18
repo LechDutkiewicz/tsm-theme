@@ -1,0 +1,18 @@
+/*=================================
+=            Home page            =
+=================================*/
+
+.header__jumbo {
+	> p {
+		@extend .animated;
+		@extend .fadeInRight;
+		&:first-child {
+			@include animation-delay( .5s );
+		}
+		&:last-child {
+			@include animation-delay( 1s );
+		}
+	}
+}
+
+/*=====  End of Home page  ======*/

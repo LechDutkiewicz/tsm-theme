@@ -19,11 +19,41 @@ img {
 	}
 }
 
-/****************************************
-*										*
-*				Include sprites
-*										*
-****************************************/
+/*=======================================
+=            Include sprites            =
+=======================================*/
 
 @include sprites($spritesheet-sprites);
+
+/*----------  Include retina sprites  ----------*/
+
 @include retina-sprites($retina-groups);
+
+/*=====  End of Include sprites  ======*/
+
+
+
+
+/*==========================================
+=            Figure and caption            =
+==========================================*/
+
+figure {
+	figcaption {
+		margin-top: rem-calc($figcaption-margin-top);
+		font-size: rem-calc($figcaption-font-size);
+		text-align: center;
+		a {
+			color: $figcaption-link-color;
+			@include hover-focus {
+				color: scale-color($figcaption-link-color, $lightness: -15%);
+			}
+		}
+	}
+	img {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+/*=====  End of Figure and caption  ======*/

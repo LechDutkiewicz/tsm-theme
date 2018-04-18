@@ -1,3 +1,106 @@
+/*!
+ * Top bar navigation
+ *
+ */
+
+ /*===============================
+=            Top bar            =
+===============================*/
+
+header.sticky-bar {
+	position: fixed;
+	top: 0;
+	z-index: 2;
+	@include transition(transform $cubic-transition);
+	width: 100vw;
+	max-width: 100%;
+	&.nav-up {
+		@include translateY(-100%);
+	}
+}
+
+.navbar {
+	&__nav {
+		background-color: $mobile-nav-bg;
+		position: relative;
+		@include breakpoint($desktop) {
+			background-color: transparent;
+		}
+	}
+	&__shadow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		// @include background-image( linear-gradient( to bottom, rgba($cta-nav-bg, .6), rgba($cta-nav-bg, .3) 30%, rgba($cta-nav-bg, .10) 50%, transparent ) );
+		background: rgba($cta-nav-bg, .6);
+		z-index: -1;
+	}
+}
+
+/*----------  title-bar  ----------*/
+
+.title-bar {
+	padding: 0;
+}
+
+/*=====  End of Top bar  ======*/
+
+/*============================
+=            Logo            =
+============================*/
+
+.company-logo {
+	display: block;
+	margin: rem-calc(12) 0;
+	.logo {
+		display: block;
+		margin-left: rem-calc(15);
+		@include breakpoint($desktop) {
+			margin-left: 0;
+		}
+	}
+}
+
+/*=====  End of Logo  ======*/
+
+/*========================================
+=            Menu for desktop            =
+========================================*/
+
+.menu__desktop {
+	.menu {
+		> li {
+			padding: .7rem 0;
+			> a {
+				color: $desktop-nav-color;
+				text-transform: uppercase;
+				font-size: $desktop-nav-font-size;
+				// font-weight: $desktop-nav-font-weight;
+				letter-spacing: $desktop-nav-letter-spacing;
+				padding: 0;
+				position: relative;
+				@include hover-focus {
+					color: $anchor-color-hover;
+				}
+			}
+			&:not(:last-child) {
+				> a {
+					margin-right: rem-calc(20);
+				}
+			}
+		}
+		.active {
+			> a {
+				color: $menu-item-color-active;
+			}
+		}
+	}	
+}
+
+/*=====  End of Menu for desktop  ======*/
+
 ul.nav {
 	list-style: none;
 	margin: 0;
@@ -8,12 +111,19 @@ nav {
 	display: inline-block;
 }
 
-.company-logo {
-	display: block;
-	// margin: 8px auto;
-	// text-align: center;
-	.logo {
-		display: block;
-		// margin: auto;
+/*==================================
+=            CTA navbar            =
+==================================*/
+
+.navbar__cta {
+	line-height: rem-calc(30);
+	text-align: right;
+	span + span,
+	span + a {
+		margin-left: rem-calc(10);
 	}
 }
+
+/*=====  End of CTA navbar  ======*/
+
+

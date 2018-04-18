@@ -1,0 +1,26 @@
+/*!
+ * Theme labels
+ *
+ */
+
+ .label {
+	display: inline-block;
+	padding: $label-padding;
+	margin-bottom: rem-calc(4);
+
+	border-radius: $label-radius;
+
+	font-size: $label-font-size;
+	line-height: 1.2;
+	cursor: default;
+
+	background: $label-background;
+	color: $label-color;
+
+	@each $name, $color in $label-palette {
+		&.#{$name} {
+			background: $color;
+			color: color-pick-contrast($color, ($label-color, $label-color-alt));
+		}
+	}
+}

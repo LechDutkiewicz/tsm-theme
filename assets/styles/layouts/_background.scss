@@ -1,0 +1,48 @@
+.bg-cover {
+	@include bg-cover;
+}
+
+.bg-responsive {
+	@include bg-responsive;
+	z-index: -2;
+}
+
+// .bg-responsive--mobile {
+// 	@include bg-responsive-mobile;
+// 	z-index: -2;
+// }
+
+.overlay {
+	@include overlay(.5, $primary-color);
+	z-index: -1;
+	&-secondary {
+		background-color: $secondary-color;
+	}
+	&__sheet {
+		@include overlay();
+		z-index: -1;
+	}
+}
+
+/*=========================================
+=            Gradient overlays            =
+=========================================*/
+
+// .overlay__gradient {
+// 	&--yellow {
+// 		@include background-image( linear-gradient( to right, $gorse, $buttercup ) );
+// 	}
+// }
+
+// .image__overlay__gradient {
+// 	&--yellow {
+// 		@include opacity(1);
+// 		background: transparent;
+// 		@include background-image( linear-gradient( to right, rgba($gorse, .5), rgba($gorse, .7) 15%, $gorse 30%, $buttercup ) );
+// 	}
+// }
+
+/*=====  End of Gradient overlays  ======*/
+
+
+

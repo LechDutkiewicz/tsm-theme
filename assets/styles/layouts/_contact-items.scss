@@ -1,0 +1,54 @@
+/*============================================
+=            Contact box elements            =
+============================================*/
+
+.contact {
+	&__icons {
+		&--huge {
+			font-size: rem-calc(30);
+			@include breakpoint($tablet) {
+				font-size: rem-calc(35);
+			}
+		}
+	}
+	&__element {
+		color: $contact-form-accent;
+		&--secondary {
+			color: $contact-form-secondary;
+		}
+	}
+	&__link {
+		color: $contact-form-accent;
+		@include hover-focus {
+			color: scale-color($contact-form-accent, $lightness: -15%);
+		}
+		&--secondary {
+			display: block;
+			color: $contact-form-secondary;
+			font-size: rem-calc(13);
+		}
+	}
+}
+
+/*=====  End of Contact box elements  ======*/
+
+
+
+
+
+/*=============================
+=            Vcard            =
+=============================*/
+
+.vcard {
+	margin-top: rem-calc(20);
+	&:first-of-type {
+		margin-top: 0;
+	}
+	& + a {
+		display: block;
+		margin-top: rem-calc(10);
+	}
+}
+
+/*=====  End of Vcard  ======*/

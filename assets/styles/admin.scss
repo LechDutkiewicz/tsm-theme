@@ -1,5 +1,22 @@
+@import "compass";
+@import 'compass/css3';
+@import 'compass/css3/animation';
+@import 'compass/css3/transition';
+@import 'compass/css3/transform';
+
+@import "common/mixins";
 @import "common/variables";
-@import "theme_font";
+@import "settings/_settings";
+
+// Automatically injected Bower dependencies via wiredep (never manually edit this block)
+// bower:scss
+@import "../../bower_components/foundation-sites/scss/foundation.scss";
+@import "../../bower_components/animate-sass/_animate.scss";
+// endbower
+
+@include foundation-flex-grid;
+@import "components/theme_icon_font";
+@import "admin/colors";
 
 .field {
 	[data-field_name="themeicons"] {
@@ -8,7 +25,7 @@
 				display: none;
 				&[checked] + i {
 					opacity: 1;
-					border-color: $black;
+					border-color: colorGet('black');
 				}
 			}
 		}
