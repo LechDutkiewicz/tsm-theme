@@ -1,7 +1,5 @@
 <?php
 
-namespace Roots\Sage\Plugins;
-
 if ( !defined( 'ABSPATH' ) )
 	exit( 'No direct script access allowed' ); // Exit if accessed directly
 
@@ -40,7 +38,7 @@ if ( !defined( 'ABSPATH' ) )
 
 require_once( VENDOR_PATH . 'tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php' );
 
-add_action( 'tgmpa_register', __NAMESPACE__ . '\\sage_register_required_plugins' );
+add_action( 'tgmpa_register', 'sage_register_required_plugins' );
 
 /**
  * Register the required plugins for this theme.
@@ -66,18 +64,10 @@ function sage_register_required_plugins() {
 	 */
 	$plugins = array(
 
-		/*
-		*		ACF plugins
-		*/
-
-		// array(
-		// 	'name'					=> 'Advanced Custom Fields', // The plugin name.
-		// 	'slug'					=> 'advanced-custom-fields', // The plugin slug (typically the folder name).
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
+		/*===================================
+		=            ACF plugins            =
+		===================================*/
+		
 		array(
 			'name'					=> 'Advanced Custom Fields Pro', // The plugin name.
 			'slug'					=> 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
@@ -85,101 +75,74 @@ function sage_register_required_plugins() {
 			'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
-
-		// array(
-		// 	'name'					=> 'ACF Options Page', // The plugin name.
-		// 	'slug'					=> 'acf-options-page', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'acf-options-page.1.2.0.zip', // The plugin source.
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		// array(
-		// 	'name'					=> 'ACF Gallery', // The plugin name.
-		// 	'slug'					=> 'acf-gallery', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'acf-gallery.1.1.0.zip', // The plugin source.
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		// array(
-		// 	'name'					=> 'ACF Repeater', // The plugin name.
-		// 	'slug'					=> 'acf-repeater', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'acf-repeater.1.1.0.zip', // The plugin source.
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		// array(
-		// 	'name'					=> 'ACF Video', // The plugin name.
-		// 	'slug'					=> 'acf-video', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'acf-video.zip', // The plugin source.
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		// array(
-		// 	'name'					=> 'ACF Star Rating', // The plugin name.
-		// 	'slug'					=> 'acf-field-star-rating', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'acf-field-star-rating.zip', // The plugin source.
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		// array(
-		// 	'name'					=> 'ACF Location', // The plugin name.
-		// 	'slug'					=> 'acf-location', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'acf-location.zip', // The plugin source.
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		/*
-		*		End ACF plugins
-		*/
-
-		/*
-		*		SEO plugins
-		*/
-
+		),
+		
 		array(
-			'name'					=> 'WordPress SEO by Yoast', // The plugin name.
-			'slug'					=> 'wordpress-seo', // The plugin slug (typically the folder name).
+			'name'					=> 'ACF Code Field', // The plugin name.
+			'slug'					=> 'acf-code-field', // The plugin slug (typically the folder name).
+			'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
+			'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		),
+		
+		/*=====  End of ACF plugins  ======*/
+		
+
+		
+
+		/*===================================
+		=            SEO plugins            =
+		===================================*/
+		
+		array(
+			'name'					=> 'All in One SEO Pack', // The plugin name.
+			'slug'					=> 'all-in-one-seo-pack', // The plugin slug (typically the folder name).
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
+		
+		/*=====  End of SEO plugins  ======*/
 
-		/*
-		*		End seo plugins
-		*/
 
-		/*
-		*		Media and content plugins
-		*/
 
+
+
+		/*=================================================
+		=            Media and content plugins            =
+		=================================================*/
+		
 		array(
 			'name'					=> 'Fly Dynamic Image Resizer', // The plugin name.
 			'slug'					=> 'fly-dynamic-image-resizer', // The plugin slug (typically the folder name).
 			'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
-		array(
-			'name'					=> 'SEO Friendly Images', // The plugin name.
-			'slug'					=> 'seo-image', // The plugin slug (typically the folder name).
-			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
-			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		// array(
+		// 	'name'					=> 'Justified Gallery', // The plugin name.
+		// 	'slug'					=> 'justified-gallery', // The plugin slug (typically the folder name).
+		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// ),
+
+		// array(
+		// 	'name'					=> 'Simple YouTube Responsive', // The plugin name.
+		// 	'slug'					=> 'simple-youtube-responsive', // The plugin slug (typically the folder name).
+		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// ),
+
+		// array(
+		// 	'name'					=> 'SEO Friendly Images', // The plugin name.
+		// 	'slug'					=> 'seo-image', // The plugin slug (typically the folder name).
+		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// 	),
 
 		array(
 			'name'					=> 'Smush Image Compression and Optimization', // The plugin name.
@@ -187,15 +150,7 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
-
-		array(
-			'name'					=> 'WP Mail SMTP', // The plugin name.
-			'slug'					=> 'wp-mail-smtp', // The plugin slug (typically the folder name).
-			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
-			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
 		array(
 			'name'					=> 'Sierotki', // The plugin name.
@@ -203,15 +158,15 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
-		array(
-			'name'					=> 'Simple Share Buttons Adder', // The plugin name.
-			'slug'					=> 'simple-share-buttons-adder', // The plugin slug (typically the folder name).
-			'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-			'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		// array(
+		// 	'name'					=> 'Simple Share Buttons Adder', // The plugin name.
+		// 	'slug'					=> 'simple-share-buttons-adder', // The plugin slug (typically the folder name).
+		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// 	),
 
 		array(
 			'name'					=> 'Cookie Consent', // The plugin name.
@@ -219,15 +174,34 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
+
+		array(
+			'name'					=> 'Favicon by RealFaviconGenerator', // The plugin name.
+			'slug'					=> 'favicon-by-realfavicongenerator', // The plugin slug (typically the folder name).
+			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		),
+		
+		/*=====  End of Media and content plugins  ======*/	
+
+
+
+
+
+
+		/*==============================================
+		=            Theme specific plugins            =
+		==============================================*/
 
 		// array(
-		// 	'name'					=> 'Better Click to Tweet', // The plugin name.
-		// 	'slug'					=> 'better-click-to-tweet', // The plugin slug (typically the folder name).
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
+		// 	'name'					=> 'SlideShare for WordPress by Yoast', // The plugin name.
+		// 	'slug'					=> 'slideshare', // The plugin slug (typically the folder name).
+		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// ),
 
 		// array(
 		// 	'name'					=> 'Radio Buttons for Taxonomies', // The plugin name.
@@ -235,39 +209,41 @@ function sage_register_required_plugins() {
 		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
+		// ),
 
-		/*
-		*		End media and content plugins
-		*/
+		// array(
+		// 	'name'					=> 'Better Click to Tweet', // The plugin name.
+		// 	'slug'					=> 'better-click-to-tweet', // The plugin slug (typically the folder name).
+		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// ),
 
-		/*
-		*		Branding plugins
-		*/
+		// array(
+		// 	'name'					=> 'TinyMCE Advanced', // The plugin name.
+		// 	'slug'					=> 'tinymce-advanced', // The plugin slug (typically the folder name).
+		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// ),
 
-		array(
-			'name'					=> 'AG Custom Admin', // The plugin name.
-			'slug'					=> 'ag-custom-admin', // The plugin slug (typically the folder name).
-			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
-			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		/*=====  End of Theme specific plugins  ======*/
 
-		/*
-		*		End branding plugins
-		*/
 
-		/*
-		*		Security plugins
-		*/
 
+
+
+		/*========================================
+		=            Security plugins            =
+		========================================*/
+		
 		array(
 			'name'					=> 'Two Factor Authentication', // The plugin name.
 			'slug'					=> 'two-factor-authentication', // The plugin slug (typically the folder name).
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
 		array(
 			'name'					=> 'Wordfence Security', // The plugin name.
@@ -275,7 +251,7 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
 		array(
 			'name'					=> 'Disable Comments', // The plugin name.
@@ -283,7 +259,7 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
 		array(
 			'name'					=> 'Disable XML-RPC', // The plugin name.
@@ -291,7 +267,7 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
 		array(
 			'name'					=> 'Disable XML-RPC Pingback', // The plugin name.
@@ -299,7 +275,7 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
 		array(
 			'name'					=> 'WPS Hide Login', // The plugin name.
@@ -307,23 +283,25 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
+		
+		/*=====  End of Security plugins  ======*/
+		
 
-		/*
-		*		End security plugins
-		*/
+		
 
-		/*
-		*		Performance plugins
-		*/
 
+		/*===========================================
+		=            Performance plugins            =
+		===========================================*/
+		
 		array(
 			'name'					=> 'WP Super Cache', // The plugin name.
 			'slug'					=> 'wp-super-cache', // The plugin slug (typically the folder name).
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
 		array(
 			'name'					=> 'Query Monitor', // The plugin name.
@@ -331,15 +309,15 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
-		// array(
-		// 	'name'					=> 'Google Analytics for WordPress by MonsterInsights', // The plugin name.
-		// 	'slug'					=> 'google-analytics-for-wordpress', // The plugin slug (typically the folder name).
-		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
+		array(
+			'name'					=> 'Google Analytics for WordPress by MonsterInsights', // The plugin name.
+			'slug'					=> 'google-analytics-for-wordpress', // The plugin slug (typically the folder name).
+			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		),
 
 		array(
 			'name'					=> 'Remove Query Strings From Static Resources', // The plugin name.
@@ -347,15 +325,15 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
-		array(
-			'name'					=> 'Disable Emojis', // The plugin name.
-			'slug'					=> 'disable-emojis', // The plugin slug (typically the folder name).
-			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
-			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		// array(
+		// 	'name'					=> 'Disable Emojis', // The plugin name.
+		// 	'slug'					=> 'disable-emojis', // The plugin slug (typically the folder name).
+		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// ),
 
 		array(
 			'name'					=> 'WP-Optimize', // The plugin name.
@@ -363,7 +341,7 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
 
 		array(
 			'name'					=> 'Optimize Database after Deleting Revisions', // The plugin name.
@@ -371,74 +349,48 @@ function sage_register_required_plugins() {
 			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
+		),
+		
+		/*=====  End of Performance plugins  ======*/
 
-		array(
-			'name'					=> 'Optimize Database after Deleting Revisions', // The plugin name.
-			'slug'					=> 'rvg-optimize-database', // The plugin slug (typically the folder name).
-			'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
-			'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			),
 
-		/*
-		*		End performance plugins
-		*/
 
-		/*
-		*		Uncomment section above for multilangual WMPL plugins
-		*/
+
+		/*====================================
+		=            WPML plugins            =
+		====================================*/
 
 		// array(
 		// 	'name'					=> 'WPML Multilingual CMS', // The plugin name.
-		// 	'slug'					=> 'wpml', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'sitepress-multilingual-cms.3.6.3.zip', // The plugin source.
-		// 	'required'				=> true, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		// array(
-		// 	'name'					=> 'WPML String Translation', // The plugin name.
-		// 	'slug'					=> 'wpml-string-translation', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'wpml-string-translation.2.5.2.zip', // The plugin source.
+		// 	'slug'					=> 'sitepress-multilingual-cms', // The plugin slug (typically the folder name).
+		// 	'source'				=> PLUGINS_PATH . 'sitepress-multilingual-cms.3.8.4.zip', // The plugin source.
 		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		// array(
-		// 	'name'					=> 'WPML Media', // The plugin name.
-		// 	'slug'					=> 'wpml-media', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'wpml-media-translation.2.1.24.zip', // The plugin source.
-		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
-
-		// array(
-		// 	'name'					=> 'WPML Translation Management', // The plugin name.
-		// 	'slug'					=> 'wpml-translation-management', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'wpml-translation-management.2.2.7.zip', // The plugin source.
-		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
-		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
+		// ),
 
 		// array(
 		// 	'name'					=> 'Advanced Custom Fields Multilingual', // The plugin name.
-		// 	'slug'					=> 'wpml-acf', // The plugin slug (typically the folder name).
-		// 	'source'				=> PLUGINS_PATH . 'acfml.0.4.zip', // The plugin source.
+		// 	'slug'					=> 'acfml', // The plugin slug (typically the folder name).
+		// 	'source'				=> PLUGINS_PATH . 'acfml.0.6.zip', // The plugin source.
 		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
 		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-		// 	),
+		// ),
 
-		/*
-		*		End multilangual WMPL plugins
-		*/
-
-		);
+		// array(
+		// 	'name'					=> 'WPML Media', // The plugin name.
+		// 	'slug'					=> 'wpml-media-translation', // The plugin slug (typically the folder name).
+		// 	'source'				=> PLUGINS_PATH . 'wpml-media-translation.2.2.2.zip', // The plugin source.
+		// 	'required'				=> false, // If false, the plugin is only 'recommended' instead of required.
+		// 	'force_activation'		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		// 	'force_deactivation'	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+		// ),
+		
+		/*=====  End of WPML plugins  ======*/
+		
+		
+	);
 
 	/*
 	 * Array of configuration settings. Amend each line as needed.
@@ -537,8 +489,7 @@ function sage_register_required_plugins() {
 			'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
 		),
 		*/
-		);
+	);
 
 tgmpa( $plugins, $config );
 }
-?>

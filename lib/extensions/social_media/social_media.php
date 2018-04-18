@@ -68,6 +68,7 @@ if ( function_exists( "acf_add_local_field_group" ) ) {
 							'googleplus'				=> 'Google',
 							'twitter'					=> 'Twitter',
 							'linkedin'					=> 'linkedIn',
+							'youtube'					=> 'YouTube',
 						),
 					),
 					array(
