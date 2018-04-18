@@ -7,16 +7,31 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "foundation-sites": "^6.4.3"
+    "foundation-sites": "^6.4.3",
+    "animate-sass": "^0.8.2",
+    "waypoints": "^4.0.1",
+    "magnific-popup": "^1.1.0",
+    "jquery-validation": "^1.17.0",
+    "lazysizes": "^4.0.2"
   },
   "resolutions": {
-    "jquery": "2.2.0"
+    "jquery": "^3.0.0"
   },
   "overrides": {
     "motion-ui": {
       "dependencies": {
-        "jquery": "~2.2.0",
-        "foundation-sites": "^6.3.1"
+        "foundation-sites": "^6.4.3"
+      },
+      "magnific-popup": {
+        "main": [
+          "dist/jquery.magnific-popup.js"
+        ]
+      },
+      "waypoints": {
+        "main": [
+          "lib/jquery.waypoints.js",
+          "lib/shortcuts/inview.js"
+        ]
       },
       "main": [
         "dist/motion-ui.js",
